@@ -93,6 +93,11 @@ pub fn broadcast_from_netid(net_id: &str, prefix: u32) -> String{
     conv::int_to_ipv4(brodcast_int).to_string()
 }
 
+/*
+
+    Ottieni il gateway passando il net id e prefix
+
+*/
 
 pub fn gateway_from_netid(net_id: &str, prefix: u32) -> String{
     let net_int: u32 = conv::ipv4_to_int( net_id);
@@ -139,3 +144,26 @@ pub fn select_host(net_id: &str, prefix: u32, subnet_req: u32, host_req: u32) ->
 
     conv::int_to_ipv4(ip_net).to_string()
 }
+
+
+
+
+pub fn netmask_from_prefix(prefix: u32) -> String{
+
+    let mask: u32 = if prefix == 0 {
+        0
+    } else {
+        (!0u32) << (32 - prefix)
+    };
+
+
+    let oct1 = (mask >> 24) & 255;
+    let oct2 = (mask >> 16) & 255;
+    let oct3 = (mask >> 8) & 255;
+    let oct4 = mask  & 255;
+
+    format!("{}.{}.{}.{}", oct1, oct2, oct3, oct4)
+
+}
+
+

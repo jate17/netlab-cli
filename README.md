@@ -25,3 +25,16 @@ Clona la repo e compila con Cargo:
 git clone https://github.com/tuo-utente/netlab-cli.git
 cd netlab-cli
 cargo build --release
+```
+
+
+## TODO
+- Wildcard da prefix
+
+- Ultimo host disponibile
+
+- Controllo appartenenza IP a subnet
+
+- CIDR supernetting => non penso devo prima capire
+
+- Supporto IPv6
