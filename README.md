@@ -29,7 +29,6 @@ cargo build --release
 
 
 ## TODO
-- Wildcard da prefix
 
 - Ultimo host disponibile
 

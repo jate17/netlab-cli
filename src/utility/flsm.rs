@@ -166,4 +166,23 @@ pub fn netmask_from_prefix(prefix: u32) -> String{
 
 }
 
+pub fn prefix_to_wildcard(prefix: u32) -> String{
+
+    let mask: u32 = if prefix == 0 {
+        0
+    } else {
+        (!0u32) << (32 - prefix)
+    };
+
+    let wildcard = u32::MAX - mask;
+    let oct1 = (wildcard >> 24) & 255;
+    let oct2 = (wildcard >> 16) & 255;
+    let oct3 = (wildcard >> 8) & 255;
+    let oct4 = wildcard  & 255;
+
+    format!("{}.{}.{}.{}", oct1, oct2, oct3, oct4)
+}
+
+
+
 
